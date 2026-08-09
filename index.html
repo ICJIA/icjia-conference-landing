@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NCE Summit 2026 — Design Concepts</title>
+<meta name="description" content="Client review: switch between the Modernist and Industry landing-page concepts for the National Community Engagement Summit 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff563c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/src/styles/main.css">
+<script type="module" src="/src/demo.js"></script>
+</head>
+<body class="flex h-dvh flex-col bg-[#0f0e0e] font-sans text-sm text-[#f3f2f2] antialiased">
+
+  <header class="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-white/15 bg-[#1a1918] px-6 py-3.5">
+    <div class="mr-auto flex items-center gap-2.5">
+      <span class="h-4 w-4 bg-[#ff563c]" aria-hidden="true"></span>
+      <strong class="text-[15px] font-bold tracking-[-.01em]">NCE Summit 2026</strong>
+      <span class="hidden text-[13px] text-[#9b9797] sm:inline">Landing page concepts — client review</span>
+    </div>
+    <nav aria-label="Design concept" class="inline-flex overflow-hidden rounded-md border border-white/30">
+      <button type="button" data-concept="modernist" aria-pressed="false" class="cursor-pointer px-[18px] py-2.5 text-[13px] font-semibold tracking-[.02em] text-[#9b9797] aria-pressed:bg-[#ff563c] aria-pressed:text-[#1a1918]">Modernist</button>
+      <button type="button" data-concept="industry" aria-pressed="false" class="cursor-pointer px-[18px] py-2.5 text-[13px] font-semibold tracking-[.02em] text-[#9b9797] aria-pressed:bg-[#ff563c] aria-pressed:text-[#1a1918]">Industry</button>
+    </nav>
+    <a id="standalone" class="whitespace-nowrap text-[13px] hover:underline hover:underline-offset-[3px]" href="pages/modernist.html" target="_blank" rel="noopener">Open standalone &#8599;</a>
+  </header>
+
+  <iframe id="frame" title="Selected design concept, full page" class="w-full flex-1 border-0 bg-[#0f0e0e]"></iframe>
+
+</body>
+</html>

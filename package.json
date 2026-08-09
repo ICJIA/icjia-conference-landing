@@ -1,0 +1,25 @@
+{
+  "name": "icjia-conference-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing-page design concepts for the National Community Engagement Summit 2026, with a client demo switcher.",
+  "license": "MIT",
+  "author": "cschweda <cschweda@gmail.com>",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/*
+ * Each concept page sets a theme class on <body> (.theme-modernist or
+ * .theme-industry). Themes default to dark; adding .light to <html> swaps
+ * every token via the cascade — no per-utility dark: variants needed.
+ */
+
+.theme-modernist {
+  --page: #1a1918;
+  --surface: #262423;
+  --ink: #f3f2f2;
+  --accent: #ff563c;
+  --on-accent: #1a1918;
+  --rule: rgba(243, 242, 242, .4);
+  --hairline: rgba(243, 242, 242, .18);
+  --muted: #9b9797;
+  --soft: rgba(255, 86, 60, .16);
+  --duo: grayscale(1) contrast(1.08);
+  --hatch-a: var(--surface);
+  --hatch-b: var(--page);
+}
+
+.light .theme-modernist {
+  --page: #f3f2f2;
+  --surface: #eae9e9;
+  --ink: #201e1d;
+  --accent: #ec3013;
+  --on-accent: #f3f2f2;
+  --rule: rgba(32, 30, 29, .4);
+  --hairline: rgba(32, 30, 29, .18);
+  --muted: #605d5d;
+  --soft: rgba(236, 48, 19, .10);
+}
+
+.theme-industry {
+  --page: #15181a;
+  --surface: #1d2124;
+  --ink: #f2f2f3;
+  --accent: #94bce3;
+  --on-accent: #15181a;
+  --rule: rgba(242, 242, 243, .22);
+  --hairline: rgba(242, 242, 243, .14);
+  --muted: #98989b;
+  --soft: rgba(148, 188, 227, .12);
+  --mark: #7f8c99;
+  --duo: grayscale(1) sepia(1) hue-rotate(172deg) saturate(2.2) brightness(1.06);
+  --hatch-a: var(--soft);
+  --hatch-b: transparent;
+}
+
+.light .theme-industry {
+  --page: #f2f2f3;
+  --surface: #e9e9ea;
+  --ink: #1d1f20;
+  --accent: #5980a6;
+  --on-accent: #f2f2f3;
+  --rule: rgba(29, 31, 32, .20);
+  --hairline: rgba(29, 31, 32, .12);
+  --muted: #5d5d60;
+  --soft: rgba(89, 128, 166, .08);
+  --mark: #8a8a8d;
+  --duo: grayscale(1) sepia(1) hue-rotate(172deg) saturate(1.5) brightness(.94);
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-rule: var(--rule);
+  --color-hairline: var(--hairline);
+  --color-muted: var(--muted);
+  --color-soft: var(--soft);
+  --font-archivo: "Archivo", system-ui, sans-serif;
+  --font-barlow: "Barlow", system-ui, sans-serif;
+  --font-condensed: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+}
+
+@layer base {
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent, #94bce3);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+}
+
+/* Photo treatment (per-theme filter). */
+@utility duotone {
+  filter: var(--duo, grayscale(1));
+}
+
+/* Hatched placeholder background behind imagery. */
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--hatch-a, var(--soft)) 0 10px,
+    var(--hatch-b, transparent) 10px 20px
+  );
+}
+
+/*
+ * Drafting-style registration marks on all four corners of a framed block
+ * (Industry concept). Marks are drawn by two pseudo-element strips that
+ * overhang the frame by 5px, so the crosses sit centred on the corners.
+ */
+@utility reg-marks {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 11px;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--mark, currentColor) 0 0) 5px 0 / 1px 11px no-repeat,
+      linear-gradient(var(--mark, currentColor) 0 0) 0 5px / 11px 1px no-repeat,
+      linear-gradient(var(--mark, currentColor) 0 0) right 5px top 0 / 1px 11px no-repeat,
+      linear-gradient(var(--mark, currentColor) 0 0) right 0 top 5px / 11px 1px no-repeat;
+  }
+
+  &::before { top: -5px; }
+  &::after { bottom: -5px; }
+}
+
+/* Centred crosshair inside a small square (Industry logo mark). */
+@utility cross-mark {
+  background:
+    linear-gradient(var(--mark, currentColor) 0 0) center / 1px 100% no-repeat,
+    linear-gradient(var(--mark, currentColor) 0 0) center / 100% 1px no-repeat;
+}
+
+/* Two-corner variant: top-left and bottom-right only. */
+@utility reg-marks-2 {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 11px;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -5px;
+    background:
+      linear-gradient(var(--mark, currentColor) 0 0) 5px 0 / 1px 11px no-repeat,
+      linear-gradient(var(--mark, currentColor) 0 0) 0 5px / 11px 1px no-repeat;
+  }
+
+  &::after {
+    bottom: -5px;
+    background:
+      linear-gradient(var(--mark, currentColor) 0 0) right 5px top 0 / 1px 11px no-repeat,
+      linear-gradient(var(--mark, currentColor) 0 0) right 0 top 5px / 11px 1px no-repeat;
+  }
+}
