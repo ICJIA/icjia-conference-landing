@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   inline event handlers), and the demo page wiring.
 - Project scaffolding: `package.json`, `vite.config.js`, `.nvmrc` (Node 22),
   `.gitignore`, MIT `LICENSE`, `README.md`, and this changelog.
+- Netlify deployment config (`netlify.toml`): static publish of `dist/` with
+  the test suite as a deploy gate, immutable caching for hashed assets, and
+  security headers including a hash-based Content-Security-Policy.
 
 ### Changed
 

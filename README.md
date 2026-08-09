@@ -61,6 +61,15 @@ npm run dev        # dev server with the demo switcher at /
 └── LICENSE               # MIT
 ```
 
+## Deployment
+
+The site deploys to Netlify as a static site (`netlify.toml`): the Vitest
+suite runs as a deploy gate, the Vite build publishes from `dist/`, hashed
+assets are cached immutably, and every response carries security headers —
+including a hash-based Content-Security-Policy (no `unsafe-inline`). If the
+inline theme-bootstrap scripts in `pages/*.html` change, recompute the two
+script hashes in `netlify.toml`.
+
 ## Production notes
 
 The concept pages are written as production code, not comps:
