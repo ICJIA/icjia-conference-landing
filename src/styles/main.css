@@ -25,12 +25,13 @@
   --page: #f3f2f2;
   --surface: #eae9e9;
   --ink: #201e1d;
-  --accent: #ec3013;
+  /* Must stay ≥4.5:1 against --page and under --on-accent text (WCAG AA). */
+  --accent: #c9280f;
   --on-accent: #f3f2f2;
   --rule: rgba(32, 30, 29, .4);
   --hairline: rgba(32, 30, 29, .18);
   --muted: #605d5d;
-  --soft: rgba(236, 48, 19, .10);
+  --soft: rgba(201, 40, 15, .10);
 }
 
 .theme-industry {
@@ -53,12 +54,13 @@
   --page: #f2f2f3;
   --surface: #e9e9ea;
   --ink: #1d1f20;
-  --accent: #5980a6;
+  /* Must stay ≥4.5:1 against --page and under --on-accent text (WCAG AA). */
+  --accent: #4a6c8f;
   --on-accent: #f2f2f3;
   --rule: rgba(29, 31, 32, .20);
   --hairline: rgba(29, 31, 32, .12);
   --muted: #5d5d60;
-  --soft: rgba(89, 128, 166, .08);
+  --soft: rgba(74, 108, 143, .08);
   --mark: #8a8a8d;
   --duo: grayscale(1) sepia(1) hue-rotate(172deg) saturate(1.5) brightness(.94);
 }

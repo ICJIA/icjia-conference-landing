@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- Light-theme contrast now meets WCAG 2.1 AA. The Modernist light accent
+  darkens `#ec3013` → `#c9280f` (3.75:1 → 4.9:1 against the page) and the
+  Industry light accent `#5980a6` → `#4a6c8f` (3.7:1 → 4.9:1); each fix
+  covers both accent-as-text and white-on-accent buttons, clearing all 38
+  failures found by a pixel-level audit of the light themes. Both values are
+  now pinned by the test suite.
+- Photo captions in both concepts sit on a solid dark chip instead of relying
+  on a text shadow. The Industry duotone left its captions at 2.8:1 in dark
+  mode, and any caption over a photo was one image swap away from failing;
+  the chip keeps them ≥10:1 regardless of the underlying image.
+
 ## [1.0.0] - 2026-08-09
 
 ### Added

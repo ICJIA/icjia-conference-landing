@@ -52,6 +52,24 @@ describe.each(concepts)('%s concept', (name, html) => {
   })
 })
 
+describe('theme tokens', () => {
+  const css = readFileSync('src/styles/main.css', 'utf8')
+
+  it('keeps the AA-verified light-theme accents', () => {
+    // Both values audited ≥4.5:1 against their light --page (and under
+    // --on-accent text) on 2026-08-14. Re-verify contrast before changing.
+    expect(css).toContain('--accent: #c9280f')
+    expect(css).toContain('--accent: #4a6c8f')
+  })
+
+  it('keeps photo captions on a solid chip, not bare text over the image', () => {
+    for (const [, html] of concepts) {
+      expect(html).not.toMatch(/text-shadow/)
+      expect(html.match(/<figcaption[^>]*bg-\[#/g)).toHaveLength(2)
+    }
+  })
+})
+
 describe('demo index', () => {
   it('wires up both concepts', () => {
     expect(index).toContain('pages/modernist.html')
