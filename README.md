@@ -6,6 +6,9 @@ stakeholders. Built as a Vite multi-page project with Tailwind CSS v4 and a
 Vitest suite, so there is a real dev server, a production build step, and room
 for dependencies as the chosen concept grows into the real site.
 
+Versioned as a `0.x` pre-release while the client is choosing a concept; the
+first tagged version of the real site will be `1.0.0`.
+
 ## The demo
 
 `index.html` is the client-facing entry point. A segmented control switches the
@@ -50,7 +53,8 @@ npm run dev        # dev server with the demo switcher at /
 │   ├── modernist.html    # concept A
 │   └── industry.html     # concept B
 ├── src/
-│   ├── styles/main.css   # Tailwind v4 entry: concept palettes, custom utilities
+│   ├── fonts/            # self-hosted woff2 subsets (only the weights in use)
+│   ├── styles/main.css   # Tailwind v4 entry: @font-face, concept palettes, custom utilities
 │   ├── theme.js          # light/dark toggle for the concept pages
 │   └── demo.js           # concept switcher for the demo index
 ├── tests/
@@ -81,8 +85,11 @@ The concept pages are written as production code, not comps:
   inline script is the tiny theme bootstrap in `<head>`, which a CSP can hash).
 - The "What's new" accordion is native `<details name="news">` — exclusive
   open, keyboard accessible, and fully functional without JavaScript.
-- Images carry `alt` text and dimensions; below-the-fold images lazy-load,
-  the hero is `fetchpriority="high"`.
+- Images carry `alt` text, dimensions and responsive `srcset`/`sizes`;
+  below-the-fold images lazy-load, the hero is `fetchpriority="high"`.
+- Fonts are self-hosted woff2 subsets (`src/fonts/`, hashed into the build)
+  with the critical faces preloaded per page — no third-party requests and
+  no render-blocking font stylesheet.
 - Theming is CSS-token based: each concept defines its palette as custom
   properties (dark default, `.light` override) mapped into Tailwind utilities
   via `@theme inline`.
@@ -93,7 +100,11 @@ The suite checks that each concept renders the four-speaker roster with alt
 text, that every speaker is named, that each page includes the three verified
 portraits of African American speakers (Dr. Amara Whitfield, Nia Okonjo-Ward
 and Marcus Ellison), that the news accordion is present, and that no page uses
-inline event handlers. It also confirms the demo page wires up both concepts.
+inline event handlers. It also pins the accessibility and performance
+hardening: the AA-verified light-theme accent values, photo captions on solid
+chips, self-hosted fonts (no third-party font requests), and responsive
+`srcset` on every photo. Finally, it confirms the demo page wires up both
+concepts.
 
 ## Imagery
 
@@ -101,8 +112,9 @@ All people and contact details on these pages are fictional placeholders. The
 four speaker portraits are Unsplash stock photos chosen to match the fictional
 roster and verified visually — three African American speakers (Dr. Whitfield,
 Nia Okonjo-Ward, Marcus Ellison) and one Latino speaker (Luis Berrocal). Hero
-and venue photography is Unsplash stock. Fonts load from Google Fonts; a
-production deployment of the chosen concept should self-host them.
+and venue photography is Unsplash stock, delivered responsively via
+`srcset`. Fonts (Archivo, Barlow, Barlow Condensed) are self-hosted woff2
+subsets in `src/fonts/`, downloaded from Google Fonts and served first-party.
 
 ## License
 

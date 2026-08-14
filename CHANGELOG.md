@@ -5,7 +5,23 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.2.0] - 2026-08-14
+
+### Changed
+
+- Fonts are now self-hosted as woff2 latin subsets in `src/fonts/`, hashed
+  into the immutably-cached build assets, replacing the render-blocking
+  Google Fonts stylesheet (which also cost two extra connections). Only the
+  weights actually used ship: Archivo as one variable file (covers 400 and
+  800), Barlow 400 and 500, and Barlow Condensed 600 — ~81 KB total, with
+  the critical faces preloaded per page. The CSP tightens to
+  `style-src 'self'; font-src 'self'`.
+- Every Unsplash photo now carries `srcset`/`sizes`, so phones stop
+  downloading desktop-resolution imagery (Lighthouse measured ~100–170 KB
+  over-delivery per page). Rendition sets are pinned by the test suite.
+- Adopted pre-release `0.x` versioning for the concept phase: the initial
+  release below is renumbered `1.0.0` → `0.1.0` (it was never tagged or
+  published under the old number), and this release is tagged `v0.2.0`.
 
 ### Fixed
 
@@ -20,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   mode, and any caption over a photo was one image swap away from failing;
   the chip keeps them ≥10:1 regardless of the underlying image.
 
-## [1.0.0] - 2026-08-09
+## [0.1.0] - 2026-08-09
 
 ### Added
 

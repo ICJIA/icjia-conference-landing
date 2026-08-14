@@ -23,4 +23,4 @@
     # The two sha256 hashes cover the inline theme-bootstrap <script> in each
     # concept page (pages/*.html <head>). If those scripts ever change,
     # recompute: base64(sha256(exact text between the script tags)).
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-QvIzHiENLCbYZvHm4iSNg3Q0lMdZaJFnGuPUYKbY55g=' 'sha256-hxGJtMM/DW5E8aQ9CR5oVANes5l1mCJcTKivPBKIjUc='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-QvIzHiENLCbYZvHm4iSNg3Q0lMdZaJFnGuPUYKbY55g=' 'sha256-hxGJtMM/DW5E8aQ9CR5oVANes5l1mCJcTKivPBKIjUc='; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.unsplash.com; frame-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"

@@ -50,6 +50,17 @@ describe.each(concepts)('%s concept', (name, html) => {
   it('uses no inline event handlers (CSP-friendly)', () => {
     expect(html).not.toMatch(/\son(click|load|error|input|change)=/i)
   })
+
+  it('self-hosts fonts — no third-party font requests', () => {
+    expect(html).not.toContain('fonts.googleapis.com')
+    expect(html).not.toContain('fonts.gstatic.com')
+    expect(html).toMatch(/rel="preload" href="[^"]*\/fonts\/[^"]+\.woff2" as="font"/)
+  })
+
+  it('ships responsive srcset/sizes on every photo', () => {
+    expect(html.match(/srcset="/g)).toHaveLength(6)
+    expect(html.match(/sizes="/g)).toHaveLength(6)
+  })
 })
 
 describe('theme tokens', () => {
