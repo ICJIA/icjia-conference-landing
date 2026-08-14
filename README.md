@@ -78,8 +78,11 @@ script hashes in `netlify.toml`.
 
 The concept pages are written as production code, not comps:
 
-- Semantic HTML (landmarks, heading hierarchy, `dl`/`ul` data, real links),
-  a skip link, labelled nav, and `aria-pressed` toggle states.
+- Semantic HTML: every piece of content sits in a labelled landmark, the
+  heading hierarchy is real (speaker, tier and venue names are `<h3>`s, not
+  styled paragraphs), data uses `dl`/`ul`, links are real, and there is a
+  skip link and `aria-pressed` toggle states. Passes axe-core with
+  best-practice and experimental rules enabled, not just the default AA set.
 - No inline styles and no inline event handlers — behaviour lives in module
   scripts, so the pages work under a strict Content-Security-Policy (the only
   inline script is the tiny theme bootstrap in `<head>`, which a CSP can hash).
@@ -102,8 +105,9 @@ portraits of African American speakers (Dr. Amara Whitfield, Nia Okonjo-Ward
 and Marcus Ellison), that the news accordion is present, and that no page uses
 inline event handlers. It also pins the accessibility and performance
 hardening: the AA-verified light-theme accent values, photo captions on solid
-chips, self-hosted fonts (no third-party font requests), and responsive
-`srcset` on every photo. Finally, it confirms the demo page wires up both
+chips, self-hosted fonts (no third-party font requests), responsive `srcset`
+on every photo, and the heading structure (real `<h3>` card/tier names, the
+labelled `<aside>` strip). Finally, it confirms the demo page wires up both
 concepts.
 
 ## Imagery

@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- Resolved everything flagged by an axe DevTools Pro scan run with
+  best-practice and experimental rules enabled (the pages already passed the
+  default WCAG AA ruleset): speaker names, registration tier names and the
+  venue name are real `<h3>` headings instead of bold paragraphs
+  (`p-as-heading`); the "Official conference site" strip is a labelled
+  `<aside>` landmark so no content sits outside landmarks (`region`); and
+  the demo header carries an `aria-label` so it stays distinguishable from
+  the framed concept page's header (`landmark-unique`). Rendering is
+  unchanged — heading styles live entirely in the utility classes — and the
+  new heading structure is pinned by the test suite.
+
 ## [0.2.0] - 2026-08-14
 
 ### Changed

@@ -61,6 +61,12 @@ describe.each(concepts)('%s concept', (name, html) => {
     expect(html.match(/srcset="/g)).toHaveLength(6)
     expect(html.match(/sizes="/g)).toHaveLength(6)
   })
+
+  it('uses real h3 headings for card and tier names, not styled paragraphs', () => {
+    // 3 agenda days + 4 speakers + 3 registration tiers + 1 venue name
+    expect(html.match(/<h3\b/g)).toHaveLength(11)
+    expect(html).toContain('<aside aria-label="Publication details"')
+  })
 })
 
 describe('theme tokens', () => {
